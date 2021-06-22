@@ -32,7 +32,7 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.tsx?$/,
+        test: /\.ts?$/,
         use: "ts-loader",
         exclude: /node_modules/,
       },

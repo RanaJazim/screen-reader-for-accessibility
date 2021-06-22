@@ -1,5 +1,6 @@
 import $ from "jquery";
 import audioFile from "./element_sound.mp3";
+import "../styles/screen-reader-style.css";
 
 const readerStates = {
   READING: "reading",
@@ -107,14 +108,18 @@ function ScreenReader() {
   }
 
   function highlight() {
+    const className = "screen-reader-border";
+
     const elem = getCurrentElem();
-    $(".border").removeClass("border");
-    $(elem).addClass("border");
+    $(`.${className}`).removeClass(className);
+    $(elem).addClass(className);
   }
 
   function removingStyleWhenReaderStops() {
+    const className = "screen-reader-border";
+
     $(domElements[currentIndex]).blur();
-    $(".border").removeClass("border");
+    $(`.${className}`).removeClass(className);
   }
 
   function jumpToSpeakableElems() {

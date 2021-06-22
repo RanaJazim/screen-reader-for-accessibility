@@ -15,6 +15,4 @@ function runApp() {
   });
 }
 
-console.log(document.querySelectorAll("*"));
-
 runApp();

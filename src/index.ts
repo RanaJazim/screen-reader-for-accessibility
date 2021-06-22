@@ -1,6 +1,5 @@
 import $ from "jquery";
-// @ts-ignore
-import Reader from "./utils/screen-reader.ts";
+import Reader from "./utils/screen-reader";
 
 function runApp() {
   const reader = new Reader();

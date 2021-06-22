@@ -8,7 +8,24 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "main.bundle.js",
   },
-  plugins: [new HtmlWebpackPlugin({
-    template: "./src/template.html"
-  })],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/template.html",
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpe?g|gif|mp3)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].[ext]",
+            },
+          },
+        ],
+      },
+    ],
+  },
 };

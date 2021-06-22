@@ -1,4 +1,5 @@
 import $ from "jquery";
+import audioFile from "./element_sound.mp3";
 
 const readerStates = {
   READING: "reading",
@@ -6,6 +7,8 @@ const readerStates = {
   READ_FROM_NEXT_ELEM: "reading from next element",
   PAUSE: "pause",
 };
+
+const sound = new Audio(audioFile);
 
 function ScreenReader() {
   var currentIndex = 0;
@@ -99,8 +102,8 @@ function ScreenReader() {
   }
 
   function generateSound() {
-    // const sound = new Audio("./element_sound.mp3");
-    // sound.play();
+    // const sound = new Audio(audioFile);
+    sound.play();
   }
 
   function highlight() {

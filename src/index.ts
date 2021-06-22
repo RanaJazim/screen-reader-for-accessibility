@@ -39,7 +39,7 @@ function speak(message) {
     const id = setInterval(() => {
       if (speechSynthesis.speaking === false) {
         clearInterval(id);
-        resolve();
+        resolve(id);
       }
     }, 100);
   });

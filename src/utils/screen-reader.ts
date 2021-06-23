@@ -172,9 +172,18 @@ export class ScreenReader {
 
   init() {
     const allElements = this.getAllDOMElements();
-    const elementsExcludeGeneralTags =
-      this.getAllDOMElementsExcludeGeneralTag(allElements);
-    this.elements = this.getTagsWhichHaveContent(elementsExcludeGeneralTags);
+    const elements = this.getAllDOMElementsExcludeGeneralTag(allElements);
+    this.elements = this.getTagsWhichHaveContent(elements);
+  }
+
+  async startReading() {
+    for (let i = 0; i < this.elements.length; i++) {
+      const currentElement = this.elements[i];
+      const content = this.getTagContent(currentElement);
+      if (content) {
+        await this.speak(content);
+      }
+    }
   }
 
   private getAllDOMElements() {
@@ -222,5 +231,18 @@ export class ScreenReader {
     const element = $(tag).contents().get(0);
     if (!element) return undefined;
     return element.nodeValue?.trim();
+  }
+
+  private speak(content: string) {
+    const utterence = new SpeechSynthesisUtterance(content);
+    speechSynthesis.speak(utterence);
+    return new Promise((res) => {
+      const func = setInterval(() => {
+        if (speechSynthesis.speaking === false) {
+          clearInterval(func);
+          res(content);
+        }
+      }, 100);
+    });
   }
 }

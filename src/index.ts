@@ -22,6 +22,12 @@ function main() {
   const reader = new ScreenReader();
   reader.init();
 
+  $(document).keydown((e) => {
+    if (e.code === "KeyR") {
+      reader.startReading();
+    }
+  });
+
   console.log("main", reader.domElements);
 }
 

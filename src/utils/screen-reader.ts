@@ -147,7 +147,12 @@ class Reader {
 
   private getTextWithoutAnyChildNodeText() {
     const currentElem = this.getCurrentElem();
-    return $(currentElem).clone().children().remove().end().text().trim();
+
+    const elem = $(currentElem).contents();
+    console.log("elem", elem.get(0));
+    return elem.get(0).nodeValue.trim();
+
+    // return $(currentElem).clone().children().remove().end().text().trim();
   }
 
   private getCurrentElem() {

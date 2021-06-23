@@ -161,3 +161,44 @@ class Reader {
 }
 
 export default Reader;
+
+export class ScreenReader {
+  private elements: Element[] = [];
+  private index: number = 0;
+
+  public get domElements(): Element[] {
+    return this.elements;
+  }
+
+  init() {
+    const allElements = this.getAllDOMElements();
+    this.elements = this.getAllDOMElementsExcludeGeneralTag(allElements);
+  }
+
+  private getAllDOMElements() {
+    return document.querySelectorAll("*");
+  }
+
+  private getAllDOMElementsExcludeGeneralTag(allTags: NodeListOf<Element>) {
+    const elements: Element[] = [];
+    const generalTags = [
+      "html",
+      "head",
+      "meta",
+      "title",
+      "script",
+      "body",
+      "style",
+    ];
+
+    allTags.forEach((tag) => {
+      const tagType = tag.nodeName.toLowerCase();
+
+      if (!generalTags.includes(tagType)) {
+        elements.push(tag);
+      }
+    });
+
+    return elements;
+  }
+}

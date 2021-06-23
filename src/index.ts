@@ -1,21 +1,31 @@
 import $ from "jquery";
-import Reader from "./utils/screen-reader";
+import Reader, { ScreenReader } from "./utils/screen-reader";
 
-function runApp() {
-  const reader = new Reader();
+// function runApp() {
+//   const reader = new Reader();
 
-  $(document).keydown((e) => {
-    if (reader.isReaderEnabled()) {
-      if (e.code === "ArrowRight") reader.readFromNext();
-      else if (e.code === "ArrowLeft") reader.readFromPrev();
-      else if (e.code === "KeyS") reader.stop();
-    } else {
-      if (e.code === "KeyR" && !e.ctrlKey) reader.readFromStart();
-    }
-  });
+//   $(document).keydown((e) => {
+//     if (reader.isReaderEnabled()) {
+//       if (e.code === "ArrowRight") reader.readFromNext();
+//       else if (e.code === "ArrowLeft") reader.readFromPrev();
+//       else if (e.code === "KeyS") reader.stop();
+//     } else {
+//       if (e.code === "KeyR" && !e.ctrlKey) reader.readFromStart();
+//     }
+//   });
+// }
+
+// runApp();
+
+// new Screen Reader Implementation
+function main() {
+  const reader = new ScreenReader();
+  reader.init();
+
+  console.log("main", reader.domElements);
 }
 
-runApp();
+main();
 
 // custom code here
 // function runApp() {

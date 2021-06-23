@@ -172,7 +172,9 @@ export class ScreenReader {
 
   init() {
     const allElements = this.getAllDOMElements();
-    this.elements = this.getAllDOMElementsExcludeGeneralTag(allElements);
+    const elementsExcludeGeneralTags =
+      this.getAllDOMElementsExcludeGeneralTag(allElements);
+    this.elements = this.getTagsWhichHaveContent(elementsExcludeGeneralTags);
   }
 
   private getAllDOMElements() {
@@ -200,5 +202,25 @@ export class ScreenReader {
     });
 
     return elements;
+  }
+
+  private getTagsWhichHaveContent(tags: Element[]) {
+    const elements: Element[] = [];
+
+    tags.forEach((tag) => {
+      const tagContent = this.getTagContent(tag);
+
+      if (tagContent) {
+        elements.push(tag);
+      }
+    });
+
+    return elements;
+  }
+
+  private getTagContent(tag: Element) {
+    const element = $(tag).contents().get(0);
+    if (!element) return undefined;
+    return element.nodeValue?.trim();
   }
 }

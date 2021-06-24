@@ -14,16 +14,16 @@ export class ScreenReader {
     private readonly txtToSpeechService: TextToSpeechService
   ) {}
 
-  public get domElements(): Element[] {
-    return this.elements;
-  }
-
   public get isStopReading(): boolean {
     return this.isStop;
   }
 
   public get isReaderEnabled(): boolean {
     return this.isEnabled;
+  }
+
+  private get domElements(): Element[] {
+    return this.elements;
   }
 
   init() {

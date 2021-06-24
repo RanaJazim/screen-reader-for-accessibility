@@ -3,6 +3,7 @@ import $ from "jquery";
 import audioFile from "./element_sound.mp3";
 import "../styles/screen-reader-style.css";
 import { HTML } from "./html";
+import { TextToSpeechService } from "./text-to-speech";
 // const audioFile = require("./element_sound.mp3");
 
 const readerStates = {
@@ -169,7 +170,10 @@ export class ScreenReader {
   private isStop = true;
   private isEnabled = false;
 
-  constructor(private readonly html: HTML) {}
+  constructor(
+    private readonly html: HTML,
+    private readonly txtToSpeechService: TextToSpeechService
+  ) {}
 
   public get domElements(): Element[] {
     return this.elements;
@@ -199,7 +203,7 @@ export class ScreenReader {
         $(`.${className}`).removeClass(className);
         $(currentElement).addClass(className);
         await sound.play();
-        await this.speak(content);
+        await this.txtToSpeechService.say(content);
       }
 
       ++this.index;
@@ -208,19 +212,19 @@ export class ScreenReader {
   }
 
   jumpToNext() {
-    speechSynthesis.cancel();
+    this.txtToSpeechService.cancel();
   }
 
   jumpToPrevious() {
     this.index = this.index - 2;
-    speechSynthesis.cancel();
+    this.txtToSpeechService.cancel();
   }
 
   stopReading() {
     this.isStop = true;
     this.isEnabled = false;
 
-    speechSynthesis.cancel();
+    this.txtToSpeechService.cancel();
 
     const className = "screen-reader-border";
     $(`.${className}`).removeClass(className);
@@ -229,18 +233,5 @@ export class ScreenReader {
   private setReaderEnabled() {
     this.isStop = false;
     this.isEnabled = true;
-  }
-
-  private speak(content: string) {
-    const utterence = new SpeechSynthesisUtterance(content);
-    speechSynthesis.speak(utterence);
-    return new Promise((res) => {
-      const func = setInterval(() => {
-        if (speechSynthesis.speaking === false) {
-          clearInterval(func);
-          res(content);
-        }
-      }, 100);
-    });
   }
 }

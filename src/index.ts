@@ -1,4 +1,5 @@
 import $ from "jquery";
+import { TextToSpeechService } from "./utils/text-to-speech";
 import { HTML } from "./utils/html";
 import { ScreenReader } from "./utils/screen-reader";
 
@@ -20,7 +21,7 @@ import { ScreenReader } from "./utils/screen-reader";
 
 // new Screen Reader Implementation
 function main() {
-  const reader = new ScreenReader(new HTML());
+  const reader = new ScreenReader(new HTML(), new TextToSpeechService());
   reader.init();
 
   $(document).keydown((e) => {

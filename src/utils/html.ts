@@ -4,7 +4,7 @@ export class HTML {
   private prevElement: Element | undefined;
   private styleClassname = "screen-reader-border";
 
-  getTagsWhichHaveContent() {
+  getTagsWhichHaveContent(): Element[] {
     const tags: Element[] = this.getAllDOMElementsExcludeGeneralTag();
     const elements: Element[] = [];
 
@@ -19,20 +19,20 @@ export class HTML {
     return elements;
   }
 
-  getTagContent(tag: Element) {
+  getTagContent(tag: Element): string | undefined {
     const element = $(tag).contents().get(0);
     if (!element) return undefined;
     return element.nodeValue?.trim();
   }
 
-  styleElement(element: Element) {
+  styleElement(element: Element): void {
     this.unstyleElement();
     $(element).addClass(this.styleClassname);
 
     this.prevElement = element;
   }
 
-  unstyleElement() {
+  unstyleElement(): void {
     if (this.prevElement) {
       $(this.prevElement).removeClass(this.styleClassname);
     }

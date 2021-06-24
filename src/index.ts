@@ -1,7 +1,7 @@
-import $ from "jquery";
-import { TextToSpeechService } from "./utils/text-to-speech";
 import { HTML } from "./utils/html";
 import { ScreenReader } from "./utils/screen-reader";
+import { TextToSpeechService } from "./utils/text-to-speech";
+import $ from "jquery";
 
 // function runApp() {
 //   const reader = new Reader();
@@ -30,7 +30,7 @@ function main() {
       else if (e.code === "ArrowLeft") reader.jumpToPrevious();
       else if (e.code === "KeyS") reader.stopReading();
     } else {
-      if (e.code === "KeyR") {
+      if (e.code === "KeyR" && !e.ctrlKey && !reader.isReaderEnabled) {
         reader.startReading();
       }
     }

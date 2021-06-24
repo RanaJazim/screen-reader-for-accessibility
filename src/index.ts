@@ -1,5 +1,6 @@
 import $ from "jquery";
-import Reader, { ScreenReader } from "./utils/screen-reader";
+import { HTML } from "./utils/html";
+import { ScreenReader } from "./utils/screen-reader";
 
 // function runApp() {
 //   const reader = new Reader();
@@ -19,7 +20,7 @@ import Reader, { ScreenReader } from "./utils/screen-reader";
 
 // new Screen Reader Implementation
 function main() {
-  const reader = new ScreenReader();
+  const reader = new ScreenReader(new HTML());
   reader.init();
 
   $(document).keydown((e) => {

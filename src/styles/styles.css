@@ -1,0 +1,321 @@
+.cursor {
+  cursor: none;
+}
+
+.cursor1 {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  border: 8px solid #800000;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: 0.1s;
+}
+
+.cursor2 {
+  position: fixed;
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  border-radius: 50%;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: 0.15s;
+}
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 80%;
+  top: 80%;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.highlight {
+  background-color: "#1560bd";
+  color: "#ffffff";
+  font-weight: "bold";
+}
+
+.hbtn {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+.accessibility {
+  border-radius: 50%;
+  height: 58px;
+  width: 60px;
+  font-size: 36px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.show * {
+  border: 1px solid black;
+  padding: 5px;
+}
+.cursor {
+  position: fixed;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+}
+.cursor--small {
+  width: 20px;
+  height: 20px;
+  left: -2.5px;
+  top: -2.5px;
+  border-radius: 50%;
+  z-index: 11000;
+  background: #000000;
+}
+.cursor--canvas {
+  width: 100vw;
+  height: 100vh;
+  z-index: 12000;
+}
+
+/*extra*/
+.drp_btn {
+  position: relative;
+}
+.drp_down_menu {
+  position: absolute;
+  content: "";
+  width: 315px;
+  height: 500px;
+  background: white;
+  right: 44px;
+  top: 10px;
+  display: none;
+  border-radius: 4px;
+}
+.drp_down_menu .main {
+  width: 100%;
+  float: left;
+  padding: 0px 15px 0px 15px;
+}
+.drp_down_menu.test {
+  display: block;
+
+  animation: fadeIn ease 1s;
+  -webkit-animation: fadeIn ease 1s;
+  -moz-animation: fadeIn ease 1s;
+  -o-animation: fadeIn ease 1s;
+  -ms-animation: fadeIn ease 1s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.heading {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  color: #fff;
+  background: linear-gradient(
+    to right,
+    #2d68ff,
+    #225aea,
+    #174cd6,
+    #0b3ec1,
+    #0030ac
+  ) !important;
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.language {
+  float: right;
+  width: 64%;
+  margin-bottom: 15px;
+}
+select {
+  width: 100%;
+  padding: 5px 8px;
+  background: white;
+  border: 1px solid gray;
+}
+.search_data {
+  float: left;
+  width: 100%;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+.search_data form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 5px;
+  font-size: 15px;
+  border-bottom: 1px solid gray;
+}
+.search_data form > input {
+  border: none;
+  background: none;
+  outline: none;
+}
+.search_data form > button {
+  border: none;
+  background: none;
+}
+.content {
+  display: flex;
+  width: 100%;
+  border-radius: 2px;
+}
+.column {
+  width: 100%;
+  text-align: center;
+}
+.column .single_button.right_border {
+  border-right: none;
+}
+.column .single_button {
+  border-bottom: 1px solid gray;
+  border-right: 1px solid gray;
+}
+
+.single_button:last-child {
+  border-bottom: none;
+}
+
+.column .single_button button {
+  background: none;
+  border: none;
+  width: 100%;
+  padding: 15px 0px;
+}
+.column .single_button button i {
+  font-size: 25px;
+  padding-bottom: 10px;
+}
+.column .single_button button h3 {
+  font-size: 15px;
+  margin: 0px;
+}

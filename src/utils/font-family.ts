@@ -22,6 +22,8 @@ export class FontFamilyService {
   }
 
   changeFontFamily() {
+    console.log("current font family", this.body.style.fontFamily);
+
     if (this.isIndexInRange()) {
       this.body.style.fontFamily = this.fontFamilies[this.index];
       this.index++;

@@ -1,3 +1,4 @@
+import "./styles/styles.css";
 import { HTML } from "./utils/html";
 import { ScreenReader } from "./utils/screen-reader";
 import { TextToSpeechService } from "./utils/text-to-speech";

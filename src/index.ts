@@ -23,12 +23,14 @@ function main() {
   reader.init();
 
   $(document).keydown((e) => {
-    if (e.code === "KeyR") {
-      reader.startReading();
+    if (reader.isReaderEnabled) {
+      if (e.code === "KeyS") reader.stopReading();
+    } else {
+      if (e.code === "KeyR") {
+        reader.startReading();
+      }
     }
   });
-
-  console.log("main", reader.domElements);
 }
 
 main();

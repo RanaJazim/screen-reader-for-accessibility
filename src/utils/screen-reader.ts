@@ -165,9 +165,19 @@ export default Reader;
 export class ScreenReader {
   private elements: Element[] = [];
   private index: number = 0;
+  private isStop = true;
+  private isEnabled = false;
 
   public get domElements(): Element[] {
     return this.elements;
+  }
+
+  public get isStopReading(): boolean {
+    return this.isStop;
+  }
+
+  public get isReaderEnabled(): boolean {
+    return this.isEnabled;
   }
 
   init() {
@@ -177,13 +187,37 @@ export class ScreenReader {
   }
 
   async startReading() {
-    for (let i = 0; i < this.elements.length; i++) {
-      const currentElement = this.elements[i];
+    // for (let i = 0; i < this.elements.length; i++) {
+    //   const currentElement = this.elements[i];
+    //   const content = this.getTagContent(currentElement);
+    //   if (content) {
+    //     await this.speak(content);
+    //   }
+    // }
+    this.setReaderEnabled();
+
+    while (!this.isStopReading) {
+      const currentElement = this.elements[this.index];
       const content = this.getTagContent(currentElement);
       if (content) {
         await this.speak(content);
       }
+
+      ++this.index;
+      if (this.index >= this.domElements.length) this.index = 0;
     }
+  }
+
+  stopReading() {
+    this.isStop = true;
+    this.isEnabled = false;
+
+    speechSynthesis.cancel();
+  }
+
+  private setReaderEnabled() {
+    this.isStop = false;
+    this.isEnabled = true;
   }
 
   private getAllDOMElements() {

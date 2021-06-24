@@ -208,6 +208,10 @@ export class ScreenReader {
     }
   }
 
+  jumpToNext() {
+    speechSynthesis.cancel();
+  }
+
   stopReading() {
     this.isStop = true;
     this.isEnabled = false;

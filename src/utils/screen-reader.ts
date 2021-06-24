@@ -212,6 +212,11 @@ export class ScreenReader {
     speechSynthesis.cancel();
   }
 
+  jumpToPrevious() {
+    this.index = this.index - 2;
+    speechSynthesis.cancel();
+  }
+
   stopReading() {
     this.isStop = true;
     this.isEnabled = false;

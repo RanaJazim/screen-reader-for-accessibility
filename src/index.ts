@@ -25,6 +25,7 @@ function main() {
   $(document).keydown((e) => {
     if (reader.isReaderEnabled) {
       if (e.code === "ArrowRight") reader.jumpToNext();
+      else if (e.code === "ArrowLeft") reader.jumpToPrevious();
       else if (e.code === "KeyS") reader.stopReading();
     } else {
       if (e.code === "KeyR") {

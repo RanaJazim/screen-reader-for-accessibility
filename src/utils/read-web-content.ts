@@ -10,11 +10,15 @@ export function readPageContentListenter(
   const reader = new ScreenReader(html, txtToSpeechService);
   reader.init();
 
-  document.addEventListener("keydown", readWebPageContent(reader));
+  document.addEventListener("keydown", shortKeysToNavigateScreenReader(reader));
   document.getElementById("on-screen-reader-activate")?.addEventListener(
     "click",
     () => {
-      if (!reader.isReaderEnabled) {
+      console.log("clicked screen reader");
+
+      if (reader.isReaderEnabled) {
+        reader.stopReading();
+      } else {
         reader.startReading();
       }
     },
@@ -22,12 +26,11 @@ export function readPageContentListenter(
   );
 }
 
-export function readWebPageContent(reader: ScreenReader) {
+function shortKeysToNavigateScreenReader(reader: ScreenReader) {
   return (event: KeyboardEvent) => {
     if (reader.isReaderEnabled) {
       if (event.code === ReaderKeys.NEXT) reader.jumpToNext();
       else if (event.code === ReaderKeys.PREV) reader.jumpToPrevious();
-      else if (event.code === ReaderKeys.STOP) reader.stopReading();
     }
   };
 }

@@ -4,6 +4,7 @@ import { TextToSpeechService } from "./text-to-speech";
 import "../styles/screen-reader-style.css";
 
 export class ScreenReader {
+  private static instance;
   private elements: Element[] = [];
   private index: number = 0;
   private isStop = true;
@@ -12,7 +13,13 @@ export class ScreenReader {
   constructor(
     private readonly html: HTML,
     private readonly txtToSpeechService: TextToSpeechService
-  ) {}
+  ) {
+    if (ScreenReader.instance) {
+      return ScreenReader.instance;
+    }
+
+    ScreenReader.instance = this;
+  }
 
   public get isStopReading(): boolean {
     return this.isStop;

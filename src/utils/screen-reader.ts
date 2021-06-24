@@ -198,10 +198,7 @@ export class ScreenReader {
       const currentElement = this.elements[this.index];
       const content = this.html.getTagContent(currentElement);
       if (content) {
-        const className = "screen-reader-border";
-
-        $(`.${className}`).removeClass(className);
-        $(currentElement).addClass(className);
+        this.html.styleElement(currentElement);
         await sound.play();
         await this.txtToSpeechService.say(content);
       }
@@ -225,9 +222,7 @@ export class ScreenReader {
     this.isEnabled = false;
 
     this.txtToSpeechService.cancel();
-
-    const className = "screen-reader-border";
-    $(`.${className}`).removeClass(className);
+    this.html.unstyleElement();
   }
 
   private setReaderEnabled() {

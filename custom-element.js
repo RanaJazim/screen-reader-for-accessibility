@@ -45,7 +45,7 @@ class CustomElement extends HTMLElement {
            </div>
            <div class="single_button">
                
-        <button onclick="increaseFont()"> <i class="fas fa-text-height"></i> <h3>Bigger Text</h3></button>
+        <button id="increase-font-service> <i class="fas fa-text-height"></i> <h3>Bigger Text</h3></button>
            </div>
            </div>
            <div class="column">
@@ -53,13 +53,13 @@ class CustomElement extends HTMLElement {
         <button id="font-family-service"><i class="fas fa-font"></i><h3>Font Family</h3></button>
              </div>
             <div class="single_button right_border">
-        <button onclick="changeFontFamily()"><i class="fas fa-font"></i><h3>FontStyle</h3></button>
+        <button id="font-family-service"><i class="fas fa-font"></i><h3>FontStyle</h3></button>
              </div>
             <div class="single_button right_border"> 
-        <button onclick="grayScale()"><i class="fas fa-balance-scale-right"></i><h3>GrayScale</h3></button>
+        <button id="gray-scale-service"><i class="fas fa-balance-scale-right"></i><h3>GrayScale</h3></button>
              </div>
              <div class="single_button right_border">
-        <button onclick="wordSpacing()"><i class="fas fa-text-width"></i><h3>Word Spacing</h3></button>
+        <button id="word-spacing-service"><i class="fas fa-text-width"></i><h3>Word Spacing</h3></button>
              </div>
             </div>
           </div>

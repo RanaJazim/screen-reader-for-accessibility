@@ -187,19 +187,17 @@ export class ScreenReader {
   }
 
   async startReading() {
-    // for (let i = 0; i < this.elements.length; i++) {
-    //   const currentElement = this.elements[i];
-    //   const content = this.getTagContent(currentElement);
-    //   if (content) {
-    //     await this.speak(content);
-    //   }
-    // }
     this.setReaderEnabled();
 
     while (!this.isStopReading) {
       const currentElement = this.elements[this.index];
       const content = this.getTagContent(currentElement);
       if (content) {
+        const className = "screen-reader-border";
+
+        $(`.${className}`).removeClass(className);
+        $(currentElement).addClass(className);
+        await sound.play();
         await this.speak(content);
       }
 
@@ -222,6 +220,9 @@ export class ScreenReader {
     this.isEnabled = false;
 
     speechSynthesis.cancel();
+
+    const className = "screen-reader-border";
+    $(`.${className}`).removeClass(className);
   }
 
   private setReaderEnabled() {

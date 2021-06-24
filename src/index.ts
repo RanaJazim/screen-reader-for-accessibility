@@ -6,10 +6,10 @@ import { readWebPageContent } from "./utils/read-web-content";
 import { appBootstrap } from "./utils/app-bootstrap";
 
 function main() {
-  const reader = new ScreenReader(new HTML(), new TextToSpeechService());
-  reader.init();
+  // const reader = new ScreenReader(new HTML(), new TextToSpeechService());
+  // reader.init();
 
-  document.addEventListener("keydown", readWebPageContent(reader));
+  // document.addEventListener("keydown", readWebPageContent(reader));
   appBootstrap();
 }
 

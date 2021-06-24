@@ -1,4 +1,4 @@
-class CustomElement extends HTMLElement {
+export class CustomElement extends HTMLElement {
   constructor() {
     super();
 
@@ -67,4 +67,4 @@ class CustomElement extends HTMLElement {
   }
 }
 
-customElements.define("custom-element", CustomElement);
+// customElements.define("custom-element", CustomElement);

@@ -5,17 +5,6 @@ export class TextToSpeechService {
     for (let i = 0; i < messages.length; i++) {
       await this.speechContent(messages[i]);
     }
-
-    // const utterence = new SpeechSynthesisUtterance(content);
-    // speechSynthesis.speak(utterence);
-    // return new Promise((res) => {
-    //   const func = setInterval(() => {
-    //     if (speechSynthesis.speaking === false) {
-    //       clearInterval(func);
-    //       res(content);
-    //     }
-    //   }, 100);
-    // });
   }
 
   cancel() {

@@ -76,7 +76,7 @@ export class ScreenReader {
     if (content) {
       element.scrollIntoView();
       this.html.styleElement(element);
-      await MP3Service.play();
+      MP3Service.play();
       await this.txtToSpeechService.say(content);
     }
   }

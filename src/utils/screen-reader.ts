@@ -74,7 +74,7 @@ export class ScreenReader {
   private async speechContentAndHightlightCurrentElement(element: Element) {
     const content = this.html.getTagContent(element);
     if (content) {
-      element.scrollIntoView();
+      this.html.scrollToElement(element);
       this.html.styleElement(element);
       MP3Service.play();
       await this.txtToSpeechService.say(content);

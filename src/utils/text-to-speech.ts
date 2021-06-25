@@ -1,13 +1,17 @@
 export class TextToSpeechService {
-  async say(content: string) {
-    const messages = this.splitContentToOneFiftyChars(content);
+  private messages: string[] = [];
 
-    for (let i = 0; i < messages.length; i++) {
-      await this.speechContent(messages[i]);
+  async say(content: string) {
+    this.messages = this.splitContentToOneFiftyChars(content);
+
+    for (let i = 0; i < this.messages.length; i++) {
+      await this.speechContent(this.messages[i]);
     }
   }
 
   cancel() {
+    this.messages = [];
+
     speechSynthesis.cancel();
   }
 

@@ -38,6 +38,17 @@ export class HTML {
     }
   }
 
+  scrollToElement(element: any): void {
+    var currenttop = 0;
+    if (element.offsetParent) {
+      do {
+        currenttop += element.offsetTop;
+      } while ((element = element.offsetParent));
+    }
+
+    window.scroll(0, currenttop - 200);
+  }
+
   private getAllDOMElementsExcludeGeneralTag() {
     const allTags: NodeListOf<Element> = this.getAllDOMElements();
 
